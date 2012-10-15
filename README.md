@@ -1,10 +1,10 @@
-ask-for
-=======
+
+## ask-for
 
 Node.js readline utility
 
-Usage
------
+### Usage
+
 ```javascript
 var askFor = require('ask-for');
 
@@ -14,8 +14,8 @@ askFor(['user', 'password', 'full name'], function(answers) {
 });
 ```
 
-License
--------
+### License
+
 (MIT)
 
 Copyright (c) 2012 &lt;julian@juliangruber.com&gt;
