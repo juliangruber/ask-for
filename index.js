@@ -5,19 +5,22 @@ function askFor(questions, cb) {
     input: process.stdin,
     output: process.stdout
   });
-  var answers = {};
 
-  (function ask() {
-    var question = questions.shift();
-    rl.question(question+': ', function(answer) {
-      answers[question] = answer;
-      if (!questions.length) {
-        rl.close();
-        return cb(answers);
-      }
-      ask();
-    });
-  })();
+  var answers = {};
+  var i = 0;
+	
+  function handler(answer) {
+  	var question = questions[i];
+  	answers[question] = answer;
+  	if (i == questions.length - 1) {
+      rl.close();
+      cb(answers);
+    } else {
+	    rl.question(questions[++i] + ': ', handler);
+    }
+  }
+
+  rl.question(questions[0] + ': ', handler);
 }
 
 module.exports = askFor;
