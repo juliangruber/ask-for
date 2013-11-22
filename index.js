@@ -1,6 +1,7 @@
 var readline = require('readline');
 
 function askFor(questions, cb) {
+  questions = questions.slice(); // side effect free
   var rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
